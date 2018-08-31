@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pyg_shop_web:war">
+    <output-path>$PROJECT_DIR$/pyg_shop_web/target</output-path>
+    <root id="archive" name="pyg_shop_web-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="pyg_shop_web:war exploded" />
+    </root>
+  </artifact>
+</component>

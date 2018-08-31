@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/pyg_common/pyg_common.iml" filepath="$PROJECT_DIR$/pyg_common/pyg_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyg_dao/pyg_dao.iml" filepath="$PROJECT_DIR$/pyg_dao/pyg_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyg_manage_web/pyg_manage_web.iml" filepath="$PROJECT_DIR$/pyg_manage_web/pyg_manage_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyg_parent.iml" filepath="$PROJECT_DIR$/pyg_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyg_pojo/pyg_pojo.iml" filepath="$PROJECT_DIR$/pyg_pojo/pyg_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyg_sellergoods_interface/pyg_sellergoods_interface.iml" filepath="$PROJECT_DIR$/pyg_sellergoods_interface/pyg_sellergoods_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyg_sellergoods_service/pyg_sellergoods_service.iml" filepath="$PROJECT_DIR$/pyg_sellergoods_service/pyg_sellergoods_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pyg_shop_web/pyg_shop_web.iml" filepath="$PROJECT_DIR$/pyg_shop_web/pyg_shop_web.iml" />
+    </modules>
+  </component>
+</project>
