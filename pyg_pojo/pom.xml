@@ -8,8 +8,19 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-<packaging>jar</packaging>
-    <artifactId>pyg_pojo</artifactId>
 
+    <artifactId>pyg_pojo</artifactId>
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-solr</artifactId>
+        <version>1.5.5.RELEASE</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-jpa</artifactId>
+        <version>1.9.0.RELEASE</version>
+    </dependency>
+</dependencies>
 
 </project>

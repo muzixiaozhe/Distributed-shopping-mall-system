@@ -14,10 +14,21 @@
     <link rel="stylesheet" href="../css/style.css">
 	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-    
+
+	<script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+	<!-- 分页组件开始 -->
+	<script src="../plugins/angularjs/pagination.js"></script>
+	<link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+
+	<script type="text/javascript" src="../js/base_pagination.js">  </script>
+	<script type="text/javascript" src="../js/service/searchService.js">  </script>
+	<script type="text/javascript" src="../js/service/contentCategoryService.js">  </script>
+	<script type="text/javascript" src="../js/service/uploadService.js">  </script>
+	<script type="text/javascript" src="../js/controller/baseController.js">  </script>
+	<script type="text/javascript" src="../js/controller/searchController.js">  </script>
 </head>
 
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini" ng-app="pyg" ng-controller="contentController" ng-init="findContentCategoryList()">
   <!-- .box-body -->
                 
                     <div class="box-header with-border">
@@ -33,8 +44,8 @@
                             <div class="pull-left">
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+                                        <button type="button" class="btn btn-default" title="新建" ng-click="entity={}" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
+                                        <button type="button" class="btn btn-default" title="删除" ng-click="dele()" ><i class="fa fa-trash-o"></i> 删除</button>
                                         <button type="button" class="btn btn-default" title="开启" onclick='confirm("你确认要开启吗？")'><i class="fa fa-check"></i> 开启</button>
                                         <button type="button" class="btn btn-default" title="屏蔽" onclick='confirm("你确认要屏蔽吗？")'><i class="fa fa-ban"></i> 屏蔽</button>
                                         <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
@@ -66,24 +77,25 @@
 			                          </tr>
 			                      </thead>
 			                      <tbody>
-			                          <tr>
-			                              <td><input  type="checkbox"></td>			                              
-				                          <td>1</td>
-									      <td>1</td>
-									      <td>促销海报1</td>
-									      <td>http://wwww.hb.com/hd1.html</td>
+			                          <tr ng-repeat="entity in list">
+			                              <td><input  type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
+				                          <td>{{entity.id}}</td>
+									      <td>{{entity.categoryId}}</td>
+									      <td>{{entity.title}}</td>
+									      <td>{{entity.url}}</td>
 									      <td>
-									      	<img alt="" src="" width="100px" height="50px">
+									      	<img alt="" src="{{entity.pic}}" width="100px" height="50px">
 									      </td>
-									      <td>1</td>
-									      <td>有效</td>									     								     
+									      <td>{{entity.sortOrder}}</td>
+									      <td>{{status[entity.status]}}</td>
 		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">修改</button>                                           
+		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findAll(entity.id)">修改</button>
 		                                  </td>
 			                          </tr>
 			                      </tbody>
 			                  </table>
-			                  <!--数据列表/--> 
+			                  <!--数据列表/-->
+							<tm-pagination conf="paginationConf"></tm-pagination>
                         </div>
                         <!-- 数据表格 /-->
                      </div>
@@ -104,21 +116,21 @@
 				<tr>
 		      		<td>广告分类</td>
 		      		<td>
-		      			<select class="form-control" >
+		      			<select class="form-control" ng-model="entity.categoryId" ng-options="item.id as item.name for item in contentCategoryList">
 		                </select>
 		      		</td>
 		      	</tr>
 		      	<tr>
 		      		<td>标题</td>
-		      		<td><input  class="form-control" placeholder="标题" >  </td>
+		      		<td><input  class="form-control" placeholder="标题" ng-model="entity.title">  </td>
 		      	</tr>
 			    <tr>
 		      		<td>URL</td>
-		      		<td><input  class="form-control" placeholder="URL" >  </td>
+		      		<td><input  class="form-control" placeholder="URL" ng-model="entity.url">  </td>
 		      	</tr>	
 		      	<tr>
 		      		<td>排序</td>
-		      		<td><input  class="form-control" placeholder="排序" >  </td>
+		      		<td><input  class="form-control" placeholder="排序" ng-model="entity.sortOrder" >  </td>
 		      	</tr>			      	
 		      	<tr>
 		      		<td>广告图片</td>
@@ -127,7 +139,7 @@
 							<tr>
 								<td>
 								<input type="file" id="file" />				                
-					                <button class="btn btn-primary" type="button" >
+					                <button class="btn btn-primary" type="button" ng-click="uploadFile()">
 				                   		上传
 					                </button>	
 					            </td>
@@ -141,14 +153,14 @@
 		      	<tr>
 		      		<td>是否有效</td>
 		      		<td>
-		      		   <input type="checkbox" class="icheckbox_square-blue" >
+		      		   <input type="checkbox" class="icheckbox_square-blue" ng-model="entity.status" ng-true-value="1" ng-false-value="0">
 		      		</td>
 		      	</tr>  	
 			 </table>				
 			
 		</div>
 		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
+			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
 			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
 		</div>
 	  </div>

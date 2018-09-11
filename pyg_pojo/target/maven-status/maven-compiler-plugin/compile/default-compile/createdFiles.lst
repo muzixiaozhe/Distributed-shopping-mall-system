@@ -26,6 +26,7 @@ com\pyg\pojo\TbItemExample$GeneratedCriteria.class
 com\pyg\pojo\TbBrand.class
 com\pyg\pojo\TbItemCatExample.class
 com\pyg\pojo\TbGoodsDescExample$Criteria.class
+entity\Goods.class
 com\pyg\pojo\TbTypeTemplateExample$Criterion.class
 com\pyg\pojo\TbAddressExample$Criterion.class
 com\pyg\pojo\TbItemCatExample$GeneratedCriteria.class
@@ -78,6 +79,7 @@ com\pyg\pojo\TbOrderItemExample.class
 com\pyg\pojo\TbTypeTemplateExample.class
 com\pyg\pojo\TbContentCategory.class
 com\pyg\pojo\TbGoodsDescExample$Criterion.class
+com\pyg\pojogroup\Specification.class
 com\pyg\pojo\TbOrderItem.class
 com\pyg\pojo\TbSeckillOrderExample$Criterion.class
 com\pyg\pojo\TbAddressExample$GeneratedCriteria.class

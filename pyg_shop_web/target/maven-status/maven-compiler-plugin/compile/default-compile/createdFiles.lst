@@ -1,0 +1,9 @@
+com\pyg\shop\controller\BrandController.class
+com\pyg\shop\service\UserDetailsServiceImpl.class
+com\pyg\shop\controller\TypeTemplateController.class
+com\pyg\shop\controller\LoginController.class
+com\pyg\shop\controller\ItemController.class
+com\pyg\shop\controller\GoodsController.class
+com\pyg\shop\controller\UploadController.class
+com\pyg\shop\controller\ItemCatController.class
+com\pyg\shop\controller\SellerController.class

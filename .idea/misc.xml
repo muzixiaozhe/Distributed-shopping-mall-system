@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/pyg_content_service" />
     <file type="web" url="file://$PROJECT_DIR$/pyg_manage_web" />
+    <file type="web" url="file://$PROJECT_DIR$/pyg_portal_web" />
+    <file type="web" url="file://$PROJECT_DIR$/pyg_search_service" />
+    <file type="web" url="file://$PROJECT_DIR$/pyg_search_web" />
     <file type="web" url="file://$PROJECT_DIR$/pyg_sellergoods_service" />
     <file type="web" url="file://$PROJECT_DIR$/pyg_shop_web" />
   </component>
@@ -10,6 +14,11 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/pyg_mamage_web/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">

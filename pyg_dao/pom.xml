@@ -8,42 +8,42 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-    <artifactId>pyg_dao</artifactId>
 
-<dependencies>
-    <!-- 分页插件 -->
-    <dependency>
-        <groupId>com.github.pagehelper</groupId>
-        <artifactId>pagehelper</artifactId>
-    </dependency>
-    <!-- Mybatis -->
-    <dependency>
-        <groupId>org.mybatis</groupId>
-        <artifactId>mybatis</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.mybatis</groupId>
-        <artifactId>mybatis-spring</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.github.miemiedev</groupId>
-        <artifactId>mybatis-paginator</artifactId>
-    </dependency>
-    <!-- MySql -->
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-    </dependency>
-    <!-- 连接池 -->
-    <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>druid</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>cn.dubbo</groupId>
-        <artifactId>pyg_pojo</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
-</dependencies>
+    <artifactId>pyg_dao</artifactId>
+    <dependencies>
+        <!-- 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
+        <!-- Mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.miemiedev</groupId>
+            <artifactId>mybatis-paginator</artifactId>
+        </dependency>
+        <!-- MySql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- 连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.dubbo</groupId>
+            <artifactId>pyg_pojo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>

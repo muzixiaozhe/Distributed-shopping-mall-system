@@ -44,6 +44,15 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
+        <!-- 身份验证 -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
         <!-- dubbo相关 -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -78,12 +87,22 @@
             <artifactId>servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>cn.dubbo</groupId>
             <artifactId>pyg_sellergoods_interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>cn.dubbo</groupId>
+            <artifactId>pyg_content_interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.dubbo</groupId>
+            <artifactId>pyg_common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

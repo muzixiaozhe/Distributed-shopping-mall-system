@@ -1,17 +1,19 @@
 package entity;
 
+import com.pyg.pojo.TbBrand;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class PageResult implements Serializable{
+public class PageResult implements Serializable {
     private long total;//总记录数
     private List rows;//当前页结果
 
     public PageResult(long total, List rows) {
+        //super();
         this.total = total;
         this.rows = rows;
     }
-
     public long getTotal() {
         return total;
     }
@@ -30,7 +32,7 @@ public class PageResult implements Serializable{
 
     @Override
     public String toString() {
-        return "PageResult{" +
+        return "pageResult{" +
                 "total=" + total +
                 ", rows=" + rows +
                 '}';

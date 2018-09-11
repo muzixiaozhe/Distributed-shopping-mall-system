@@ -2,7 +2,7 @@ package entity;
 
 import java.io.Serializable;
 
-public class Result implements Serializable{
+public class Result implements Serializable {
     private boolean success;
     private String message;
 
@@ -11,7 +11,7 @@ public class Result implements Serializable{
         this.message = message;
     }
 
-    public boolean isSuccess() {
+    public boolean getSuccess() {
         return success;
     }
 
@@ -30,7 +30,7 @@ public class Result implements Serializable{
     @Override
     public String toString() {
         return "Result{" +
-                "success=" + success +
+                "success='" + success + '\'' +
                 ", message='" + message + '\'' +
                 '}';
     }

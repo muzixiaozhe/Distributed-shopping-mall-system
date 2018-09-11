@@ -97,6 +97,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pyg.pojo.TbSpecification" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
     insert into tb_specification (id, spec_name)
     values (#{id,jdbcType=BIGINT}, #{specName,jdbcType=VARCHAR})
   </insert>
@@ -119,6 +122,9 @@
       </if>
     </trim>
   </insert>
+  <select id="selectOptionList"  resultType="java.util.Map" >
+    select id,spec_name as text from tb_specification
+  </select>
   <select id="countByExample" parameterType="com.pyg.pojo.TbSpecificationExample" resultType="java.lang.Integer" >
     select count(*) from tb_specification
     <if test="_parameter != null" >

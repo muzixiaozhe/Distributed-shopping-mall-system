@@ -3,6 +3,8 @@ package com.pyg.mapper;
 import com.pyg.pojo.TbBrand;
 import com.pyg.pojo.TbBrandExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TbBrandMapper {
@@ -27,4 +29,6 @@ public interface TbBrandMapper {
     int updateByPrimaryKeySelective(TbBrand record);
 
     int updateByPrimaryKey(TbBrand record);
+
+    List<Map> selectOptionList();
 }
