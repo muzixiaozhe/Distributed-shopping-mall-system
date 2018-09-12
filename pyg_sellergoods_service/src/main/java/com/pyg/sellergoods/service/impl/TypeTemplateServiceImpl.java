@@ -17,6 +17,7 @@ import com.pyg.pojo.TbTypeTemplateExample.Criteria;
 import com.pyg.sellergoods.service.TypeTemplateService;
 
 import entity.PageResult;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * 服务实现层
@@ -31,6 +32,9 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 
 	@Autowired
 	private TbSpecificationOptionMapper specificationOptionMapper;
+
+	@Autowired
+	private RedisTemplate redisTemplate;
 	/**
 	 * 查询全部
 	 */
@@ -106,13 +110,27 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 			}
 	
 		}
-		
-		Page<TbTypeTemplate> page= (Page<TbTypeTemplate>)typeTemplateMapper.selectByExample(example);		
+
+		Page<TbTypeTemplate> page= (Page<TbTypeTemplate>)typeTemplateMapper.selectByExample(example);
+		saveToRedis();//存入数据到缓存
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
 	/**
-	 * 返回规格列表
+	 * 将数据存入缓存
+	 */
+	public void saveToRedis(){
+		List<TbTypeTemplate> all = findAll();
+		for (TbTypeTemplate tbTypeTemplate : all) {
+			List<Map> brandList = JSON.parseArray(tbTypeTemplate.getBrandIds(), Map.class);
+			redisTemplate.boundHashOps("brandList").put(tbTypeTemplate.getId(),brandList);
+			List<Map> specList = findSpecList(tbTypeTemplate.getId());//根据模板id查询规格列表
+			redisTemplate.boundHashOps("specList").put(tbTypeTemplate.getId(),specList);
+		}
+	}
+
+	/**
+	 * 根据模板id查询规格列表
 	 * @param id
 	 * @return
 	 */

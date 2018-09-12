@@ -13,6 +13,7 @@ import com.pyg.pojo.TbItemCatExample.Criteria;
 import com.pyg.sellergoods.service.ItemCatService;
 
 import entity.PageResult;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * 服务实现层
@@ -24,6 +25,8 @@ public class ItemCatServiceImpl implements ItemCatService {
 
     @Autowired
     private TbItemCatMapper itemCatMapper;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 查询全部
@@ -137,6 +140,11 @@ public class ItemCatServiceImpl implements ItemCatService {
         TbItemCatExample example = new TbItemCatExample();
         Criteria criteria = example.createCriteria();
         criteria.andParentIdEqualTo(parentId);
+        //每次执行查询的时候，一次性读取缓存进行存储 (因为每次增删改都要执行此方法)
+        List<TbItemCat> all = findAll();
+        for (TbItemCat tbItemCat : all) {
+            redisTemplate.boundHashOps("itemCat").put(tbItemCat.getName(),tbItemCat.getTypeId());
+        }
         return itemCatMapper.selectByExample(example);
     }
 

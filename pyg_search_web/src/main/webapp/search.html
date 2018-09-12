@@ -147,25 +147,32 @@
 		<div class="py-container">
 			<!--bread-->
 			<div class="bread">
+				<ul class="fl sui-breadcrumb">搜索条件：</ul>
 				<ul class="tags-choose">
-					<li class="tag">分类：手机<i class="sui-icon icon-tb-close"></i></li>
-					<li class="tag">屏幕尺寸：6寸<i class="sui-icon icon-tb-close"></i></li>
+					<li class="tag" ng-if="searchMap.category!=''" ng-click="removeSearchIte('category')">商品分类：{{searchMap.category}}<i class="sui-icon icon-tb-close"></i></li>
+					<li class="tag" ng-if="searchMap.brand!=''" ng-click="removeSearchIte('brand')">品牌：{{searchMap.brand}}<i class="sui-icon icon-tb-close"></i></li>
+					<li class="tag"  ng-repeat="(key,value) in searchMap.spec" ng-click="removeSearchIte(key)">{{key}}：{{value}}<i class="sui-icon icon-tb-close"></i></li>
 				</ul>
 				<div class="clearfix"></div>
 			</div>
 			<!--selector-->
 			<div class="clearfix selector">
-				<div class="type-wrap">
+				<div class="type-wrap" ng-if="resultMap.categoryList!=null&&searchMap.category==''">
 					<div class="fl key">商品分类</div>
-					<div class="fl value"><a>手机</a></div>
-					<div class="fl value"><a>电脑</a></div>
+					<div class="fl value" ng-repeat="category in resultMap.categoryList">
+						<a ng-click="addSearchIte('category',category)">
+							{{category}}
+						</a>
+					</div>
+
 					<div class="fl ext"></div>
 				</div>
-				<div class="type-wrap logo">
+				<div class="type-wrap logo" ng-if="resultMap.brandList!=null&&searchMap.brand==''">
 					<div class="fl key brand">品牌</div>
 					<div class="value logos">
 						<ul class="logo-list">
-							<li><img src="img/_/phone01.png" /></li>
+							<li ng-repeat="brand in resultMap.brandList"><a ng-click="addSearchIte('brand',brand.text)">{{brand.text}}</a></li>
+							<!--<li><img src="img/_/phone01.png" /></li>
 							<li><img src="img/_/phone02.png" /></li>
 							<li><img src="img/_/phone03.png" /></li>
 							<li><img src="img/_/phone04.png" /></li>
@@ -182,7 +189,7 @@
 							<li><img src="img/_/phone05.png" /></li>
 							<li><img src="img/_/phone06.png" /></li>
 							<li><img src="img/_/phone07.png" /></li>
-							<li><img src="img/_/phone02.png" /></li>
+							<li><img src="img/_/phone02.png" /></li>-->
 						</ul>
 					</div>
 					<div class="ext">
@@ -190,81 +197,19 @@
 						<a href="javascript:void(0);">更多</a>
 					</div>
 				</div>
-				<div class="type-wrap">
-					<div class="fl key">网络制式</div>
+				<div class="type-wrap" ng-if="resultMap.specList!=null&&searchMap.spec[spec.text]==null" ng-repeat="spec in resultMap.specList">
+					<div class="fl key">{{spec.text}}</div>
 					<div class="fl value">
 						<ul class="type-list">
-							<li>
-								<a>GSM（移动/联通2G）</a>
+							<li ng-repeat="option in spec.options">
+								<a ng-click="addSearchIte(spec.text,option.optionName)">{{option.optionName}}</a>
 							</li>
-							<li>
-								<a>电信2G</a>
-							</li>
-							<li>
-								<a>电信3G</a>
-							</li>
-							<li>
-								<a>移动3G</a>
-							</li>
-							<li>
-								<a>联通3G</a>
-							</li>
-							<li>
-								<a>联通4G</a>
-							</li>
-							<li>
-								<a>电信3G</a>
-							</li>
-							<li>
-								<a>移动3G</a>
-							</li>
-							<li>
-								<a>联通3G</a>
-							</li>
-							<li>
-								<a>联通4G</a>
-							</li>
+
 						</ul>
 					</div>
 					<div class="fl ext"></div>
 				</div>
-				<div class="type-wrap">
-					<div class="fl key">显示屏尺寸</div>
-					<div class="fl value">
-						<ul class="type-list">
-							<li>
-								<a>4.0-4.9英寸</a>
-							</li>
-							<li>
-								<a>4.0-4.9英寸</a>
-							</li>
-						</ul>
-					</div>
-					<div class="fl ext"></div>
-				</div>
-				<div class="type-wrap">
-					<div class="fl key">摄像头像素</div>
-					<div class="fl value">
-						<ul class="type-list">
-							<li>
-								<a>1200万以上</a>
-							</li>
-							<li>
-								<a>800-1199万</a>
-							</li>
-							<li>
-								<a>1200-1599万</a>
-							</li>
-							<li>
-								<a>1600万以上</a>
-							</li>
-							<li>
-								<a>无摄像头</a>
-							</li>
-						</ul>
-					</div>
-					<div class="fl ext"></div>
-				</div>
+
 				<div class="type-wrap">
 					<div class="fl key">价格</div>
 					<div class="fl value">
@@ -342,7 +287,7 @@
 				</div>
 				<div class="goods-list">
 					<ul class="yui3-g">
-						<li class="yui3-u-1-5" ng-repeat="item in resultMap">
+						<li class="yui3-u-1-5" ng-repeat="item in resultMap.rows">
 							<div class="list-wrap">
 								<div class="p-img">
 									<a href="item.html#?goodsId={{item.goodsId}}" target="_blank"><img src="{{item.image}}" /></a>
@@ -353,8 +298,8 @@
 											<i>{{item.price.toFixed(2)}}</i>
 										</strong>
 								</div>
-								<div class="attr">
-									<em>{{item.title}}</em>
+								<div class="attr" ng-bind-html="item.title | trustHtml">
+
 								</div>
 								<div class="cu">
 									<em><span>促</span>满一件可参加超值换购</em>
