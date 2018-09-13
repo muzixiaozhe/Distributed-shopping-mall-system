@@ -2,6 +2,7 @@ package com.pyg.sellergoods.service;
 import java.util.List;
 import com.pyg.pojo.TbGoods;
 
+import com.pyg.pojo.TbItem;
 import entity.Goods;
 import entity.PageResult;
 /**
@@ -10,7 +11,13 @@ import entity.PageResult;
  *
  */
 public interface GoodsService {
-
+	/**
+	 * 根据商品id和状态查询item表信息
+	 * @param ids
+	 * @param status
+	 * @return
+	 */
+	public List<TbItem> findItemListByGoodsIdandStatus(Long[] ids,String status);
 	/**
 	 * 返回全部列表
 	 * @return

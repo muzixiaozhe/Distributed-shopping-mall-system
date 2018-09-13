@@ -94,5 +94,6 @@
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:1.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-oxm:4.2.6.RELEASE" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" level="project" />
+    <orderEntry type="module" module-name="pyg_search_interface" />
   </component>
 </module>

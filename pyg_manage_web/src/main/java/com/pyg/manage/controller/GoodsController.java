@@ -1,6 +1,9 @@
 package com.pyg.manage.controller;
+import java.util.Arrays;
 import java.util.List;
 
+import com.pyg.pojo.TbItem;
+import com.pyg.search.service.ItemSearchService;
 import entity.Goods;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +26,8 @@ public class GoodsController {
 
 	@Reference
 	private GoodsService goodsService;
-	
+	@Reference
+	private ItemSearchService itemSearchService;
 	/**
 	 * 返回全部列表
 	 * @return
@@ -97,6 +101,9 @@ public class GoodsController {
 	public Result delete(Long [] ids){
 		try {
 			goodsService.delete(ids);
+
+			itemSearchService.deleteByGoodsIds(Arrays.asList(ids));
+
 			return new Result(true, "删除成功"); 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,8 +130,15 @@ public class GoodsController {
 	 */
 	@RequestMapping("/updateStatus")
 	public Result updateStatus(Long[] ids, String status) {
+
 		try {
 			goodsService.updateStatus(ids,status);
+			if ("1".equals(status)){
+				List<TbItem> itemListByGoodsIdandStatus = goodsService.findItemListByGoodsIdandStatus(ids, status);
+				if (itemListByGoodsIdandStatus.size()>0){
+					itemSearchService.importList(itemListByGoodsIdandStatus);
+				}
+			}
 			return new Result(true,"操作成功");
 		} catch (Exception e) {
 			e.printStackTrace();

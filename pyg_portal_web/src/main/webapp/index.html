@@ -14,8 +14,8 @@
 
 	<script type="text/javascript" src="plugins/angularjs/angular.min.js">  </script>
 	<script type="text/javascript" src="js/base.js">  </script>
-	<script type="text/javascript" src="js/service/searchService.js">  </script>
-	<script type="text/javascript" src="js/controller/searchController.js">  </script>
+	<script type="text/javascript" src="js/service/contentService.js">  </script>
+	<script type="text/javascript" src="js/controller/contentController.js">  </script>
 
 </head>
 
@@ -71,8 +71,8 @@
 							<form action="" class="sui-form form-inline">
 								<!--searchAutoComplete-->
 								<div class="input-append">
-									<input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" />
-									<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+									<input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" ng-model="keywords"/>
+									<button class="sui-btn btn-xlarge btn-danger" type="button" ng-click="search()">搜索</button>
 								</div>
 							</form>
 						</div>

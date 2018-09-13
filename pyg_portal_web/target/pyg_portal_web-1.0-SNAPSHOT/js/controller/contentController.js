@@ -8,4 +8,7 @@ app.controller('contentController',function ($scope,contentService) {
             }
         );
     }
+    $scope.search=function () {
+        location.href="http://location:9104/search.html#?keywords="+$scope.keywords;
+    }
 })
