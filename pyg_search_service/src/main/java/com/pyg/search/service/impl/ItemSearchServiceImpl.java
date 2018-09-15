@@ -39,7 +39,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         ScoredPage<TbItem> page = solrTemplate.queryForPage(query, TbItem.class);
         resultMap.put("rows",page.getContent());*/
         //根据关键字搜索列表
-
+        if(searchMap.get("keywords")!=null){
             String keywords = ((String) searchMap.get("keywords")).replace(" ","");
         if (keywords.length()>0){
             searchMap.put("keywords",keywords);
@@ -57,6 +57,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
                     resultMap.putAll(map);
                 }
             }
+        }
         }
         return resultMap;
     }

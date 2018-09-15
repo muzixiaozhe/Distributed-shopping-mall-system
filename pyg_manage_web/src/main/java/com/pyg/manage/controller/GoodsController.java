@@ -2,6 +2,7 @@ package com.pyg.manage.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import com.pyg.page.service.ItemPageService;
 import com.pyg.pojo.TbItem;
 import com.pyg.search.service.ItemSearchService;
 import entity.Goods;
@@ -28,6 +29,8 @@ public class GoodsController {
 	private GoodsService goodsService;
 	@Reference
 	private ItemSearchService itemSearchService;
+	@Reference
+	private ItemPageService itemPageService;
 	/**
 	 * 返回全部列表
 	 * @return
@@ -138,11 +141,24 @@ public class GoodsController {
 				if (itemListByGoodsIdandStatus.size()>0){
 					itemSearchService.importList(itemListByGoodsIdandStatus);
 				}
+				for (Long id:ids) {
+					itemPageService.genHtml(id);
+				}
 			}
 			return new Result(true,"操作成功");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new Result(false,"操作失败");
+		}
+	}
+	@RequestMapping("genHtml")
+	public Result genHtml(Long goodsId){
+		try {
+			itemPageService.genHtml(goodsId);
+			return new Result(true,"成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Result(false,"失败");
 		}
 	}
 }
