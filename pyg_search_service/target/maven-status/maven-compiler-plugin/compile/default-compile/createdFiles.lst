@@ -1,1 +1,3 @@
+com\pyg\search\service\impl\SolrDeleteMessageListener.class
 com\pyg\search\service\impl\ItemSearchServiceImpl.class
+com\pyg\search\service\impl\SolrMessageListener.class

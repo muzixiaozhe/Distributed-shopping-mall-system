@@ -1,6 +1,5 @@
 package com.pyg.page.service.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.pyg.mapper.TbGoodsDescMapper;
 import com.pyg.mapper.TbGoodsMapper;
 import com.pyg.mapper.TbItemCatMapper;
@@ -14,8 +13,10 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.List;
@@ -68,5 +69,17 @@ public class ItemPageServiceImpl implements ItemPageService{
 
         template.process(dataMap,out);
         out.close();
+    }
+
+    /**
+     * 删除静态页
+     * @param goodsId
+     * @throws Exception
+     */
+    @Override
+    public void deleteHtml(Long goodsId) throws Exception {
+        String path=pagedir+goodsId+".html";
+        new File(path).delete();
+
     }
 }

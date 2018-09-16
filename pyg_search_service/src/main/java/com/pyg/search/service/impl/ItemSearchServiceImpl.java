@@ -79,6 +79,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         Criteria criteria=new Criteria("item_goodsid").in(goodsIds);
         query.addCriteria(criteria);
         solrTemplate.delete(query);
+        solrTemplate.commit();
     }
 
     /**

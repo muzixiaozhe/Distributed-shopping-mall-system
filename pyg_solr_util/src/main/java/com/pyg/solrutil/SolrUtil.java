@@ -7,6 +7,9 @@ import com.pyg.pojo.TbItemExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.solr.core.SolrTemplate;
+import org.springframework.data.solr.core.query.Criteria;
+import org.springframework.data.solr.core.query.SimpleQuery;
+import org.springframework.data.solr.core.query.SolrDataQuery;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,10 +36,18 @@ public class SolrUtil {
         solrTemplate.saveBeans(tbItems);
         solrTemplate.commit();
     }
+    public void delete(){
+        SolrDataQuery query=new SimpleQuery("*:*");
+
+        solrTemplate.delete(query);
+        solrTemplate.commit();
+    }
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath*:spring/applicationContext*.xml");
         SolrUtil solrUtil = (SolrUtil) classPathXmlApplicationContext.getBean("solrUtil");
-        solrUtil.importItemData();
+        /*solrUtil.importItemData();*/
+        solrUtil.delete();
+
     }
 }

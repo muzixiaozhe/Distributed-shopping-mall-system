@@ -1,1 +1,3 @@
 com\pyg\page\service\impl\ItemPageServiceImpl.class
+com\pyg\page\service\impl\HtmlDeleteMessageListener.class
+com\pyg\page\service\impl\HtmlMessageListener.class

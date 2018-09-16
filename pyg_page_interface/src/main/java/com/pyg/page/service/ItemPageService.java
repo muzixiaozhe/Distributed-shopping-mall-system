@@ -10,4 +10,8 @@ public interface ItemPageService {
      * 生成商品详情页
      */
     public void genHtml(Long goodsId) throws IOException, Exception;
+    /**
+     * 删除静态页
+     */
+    public void deleteHtml(Long goodsId) throws  Exception;
 }
