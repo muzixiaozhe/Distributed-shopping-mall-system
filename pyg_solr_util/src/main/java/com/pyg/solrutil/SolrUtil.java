@@ -12,6 +12,7 @@ import org.springframework.data.solr.core.query.SimpleQuery;
 import org.springframework.data.solr.core.query.SolrDataQuery;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,6 +36,7 @@ public class SolrUtil {
         }
         solrTemplate.saveBeans(tbItems);
         solrTemplate.commit();
+
     }
     public void delete(){
         SolrDataQuery query=new SimpleQuery("*:*");

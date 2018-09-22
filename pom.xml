@@ -28,6 +28,9 @@
         <module>pyg_user_interface</module>
         <module>pyg_user_service</module>
         <module>pyg_user_web</module>
+        <module>pyg_cart_interface</module>
+        <module>pyg_cart_service</module>
+        <module>pyg_cart_web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
