@@ -16,14 +16,14 @@
 
 </head>
 
-<body ng-app="pyg" ng-controller="cartController" ng-init="findCartList()">
+<body ng-app="pyg" ng-controller="cartController" ng-init="findCartList();findName()">
 	<!--head-->
 	<div class="top">
 		<div class="py-container">
 			<div class="shortcut">
 				<ul class="fl">
 					<li class="f-item">品优购欢迎您！</li>
-					<li class="f-item"><a href="/login.html">请登录　</a><span><a href="#">免费注册</a></span></li>
+					<li class="f-item"><a href="/login.html" ng-if="!username">请登录　</a><span ng-if="username">{{name}}</span><a href="/logout/cas" ng-if="username">退出　</a><span><a href="#">免费注册</a></span></li>
 				</ul>
 				<ul class="fr">
 					<li class="f-item">我的订单</li>
@@ -73,11 +73,13 @@
 						<input type="checkbox" name="" id="" value="" />
 						<span class="shopname self">{{cart.sellerName}}</span>
 					</div>
+
 					<div class="cart-body">
 						<div class="cart-list" ng-repeat="order in cart.orderItem">
 							<ul class="goods-list yui3-g">
 								<li class="yui3-u-1-24">
-									<input type="checkbox" name="" id="" value="" />
+
+									<input type="checkbox" name="" id="" value="" ng-click="updateSelection($event,order.id)/>
 								</li>
 								<li class="yui3-u-11-24">
 									<div class="good-item">
@@ -94,7 +96,7 @@
 								</li>
 								<li class="yui3-u-1-8"><span class="sum">{{order.totalFee.toFixed(2)}}</span></li>
 								<li class="yui3-u-1-8">
-									<a href="#none" ng-click="addGoodsToCartList(order.itemId,-order,num)">删除</a><br />
+									<a href="#none" ng-click="addGoodsToCartList(order.itemId,-order.num)">删除</a><br />
 									<a href="#none">移到我的关注</a>
 								</li>
 							</ul>
@@ -121,7 +123,7 @@
 						<span><em>已节省：</em><i>-¥20.00</i></span>
 					</div>
 					<div class="sumbtn">
-						<a class="sum-btn" href="getOrderInfo.html" target="_blank">结算</a>
+						<a class="sum-btn" href="getOrderInfo.html" >结算</a>
 					</div>
 				</div>
 			</div>

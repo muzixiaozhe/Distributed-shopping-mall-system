@@ -73,15 +73,16 @@
 						<input type="checkbox" name="" id="" value="" />
 						<span class="shopname self">{{cart.sellerName}}</span>
 					</div>
+
 					<div class="cart-body">
 						<div class="cart-list" ng-repeat="order in cart.orderItem">
 							<ul class="goods-list yui3-g">
 								<li class="yui3-u-1-24">
-									<input type="checkbox" name="" id="" value="" />
+									<input type="checkbox" name="" id="" value="" ng-click="updateSelection($event,order.id)"/>
 								</li>
 								<li class="yui3-u-11-24">
 									<div class="good-item">
-										<div class="item-img"><img src="{{order.picPath}}" /></div>
+										<div class="item-img"><img src="{{order.picPath}}" width="100" height="90"/></div>
 										<div class="item-msg">{{order.title}}</div>
 									</div>
 								</li>
@@ -121,7 +122,7 @@
 						<span><em>已节省：</em><i>-¥20.00</i></span>
 					</div>
 					<div class="sumbtn">
-						<a class="sum-btn" href="getOrderInfo.html" target="_blank">结算</a>
+						<a class="sum-btn" href="getOrderInfo.html" >结算</a>
 					</div>
 				</div>
 			</div>

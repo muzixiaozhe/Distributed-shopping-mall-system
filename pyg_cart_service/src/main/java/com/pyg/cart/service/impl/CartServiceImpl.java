@@ -6,6 +6,7 @@ import com.pyg.mapper.TbItemMapper;
 import com.pyg.pojo.TbItem;
 import com.pyg.pojo.TbOrderItem;
 import entity.Cart;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -132,8 +133,7 @@ public class CartServiceImpl implements CartService{
         Object cartList = redisTemplate.boundHashOps("cartList").get(username);
         if (cartList==null){
             return new ArrayList<>();
-            BeanUtils.copyProperties();
-            Collections.
+
         }
         return (List<Cart>) cartList;
     }

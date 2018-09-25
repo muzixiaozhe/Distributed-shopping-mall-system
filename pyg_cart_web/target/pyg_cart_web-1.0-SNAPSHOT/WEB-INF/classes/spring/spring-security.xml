@@ -11,10 +11,11 @@
     <http pattern="/js/**" security="none"></http>
     <http pattern="/img/**" security="none"></http>
     <http pattern="/plugins/**" security="none"></http>
-    <http pattern="/register.html" security="none"></http>
+    <http pattern="/cart.html" security="none"></http>
 
     <!--   entry-point-ref  入口点引用 -->
     <http use-expressions="false" entry-point-ref="casProcessingFilterEntryPoint">
+        <intercept-url pattern="/cart/*.do" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/**" access="ROLE_USER"/>
         <csrf disabled="true"/>
         <!-- custom-filter为过滤器， position 表示将过滤器放在指定的位置上，before表示放在指定位置之前  ，after表示放在指定的位置之后  -->
@@ -31,7 +32,7 @@
     </beans:bean>
     <beans:bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
         <!--service 配置自身工程的根地址+/login/cas   -->
-        <beans:property name="service" value="http://localhost:9106/login/cas"/>
+        <beans:property name="service" value="http://localhost:9107/login/cas"/>
     </beans:bean>
     <!-- CAS入口点 结束 -->
 
@@ -61,7 +62,7 @@
         <beans:property name="key" value="an_id_for_this_auth_provider_only"/>
     </beans:bean>
     <!-- 认证类 -->
-    <beans:bean id="userDetailsService" class="com.pyg.user.service.UserDetailServiceImpl"/>
+    <beans:bean id="userDetailsService" class="com.pyg.cart.service.UserDetailServiceImpl"/>
 
     <!-- 认证过滤器 结束 -->
 
