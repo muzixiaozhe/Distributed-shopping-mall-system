@@ -14,6 +14,7 @@ app.controller('payController' ,function($scope, $location, payService){
                     level:'H',
                     value:response.code_url
                 });
+                $scope.queryPayStatus();
             }	
 		);
     }
@@ -22,7 +23,7 @@ app.controller('payController' ,function($scope, $location, payService){
         payService.queryPayStatus($scope.out_trade_no).success(
             function (response) {
                 if (response.success){
-                    location.href="paysuccess.html#?monet="+$scope.total_fee;
+                    location.href="paysuccess.html#?money="+$scope.total_fee;
                 }else{
                     if(response.message=="TIME_OUT"){
                         $scope.createNative();

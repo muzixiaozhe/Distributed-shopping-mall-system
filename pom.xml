@@ -35,6 +35,9 @@
         <module>pyg_order_service</module>
         <module>pyg_pay_interface</module>
         <module>pyg_pay_service</module>
+        <module>pyg_seckill_interface</module>
+        <module>pyg_seckill_service</module>
+        <module>pyg_seckill_web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->

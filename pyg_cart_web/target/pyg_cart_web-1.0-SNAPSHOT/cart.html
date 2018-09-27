@@ -78,12 +78,11 @@
 						<div class="cart-list" ng-repeat="order in cart.orderItem">
 							<ul class="goods-list yui3-g">
 								<li class="yui3-u-1-24">
-
-									<input type="checkbox" name="" id="" value="" ng-click="updateSelection($event,order.id)/>
+									<input type="checkbox" name="" id="" value="" ng-click="updateSelection($event,order.id)"/>
 								</li>
 								<li class="yui3-u-11-24">
 									<div class="good-item">
-										<div class="item-img"><img src="{{order.picPath}}" /></div>
+										<div class="item-img"><img src="{{order.picPath}}" width="100" height="90"/></div>
 										<div class="item-msg">{{order.title}}</div>
 									</div>
 								</li>

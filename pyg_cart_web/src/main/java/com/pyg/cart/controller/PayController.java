@@ -28,7 +28,7 @@ public class PayController {
     @RequestMapping("createNative")
     public Map createNative() {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println(name);
+        //根据用户查询payLog
         TbPayLog payLog = orderService.searchPayLogFromRedis(name);
         if (payLog==null){
             return new HashMap();
