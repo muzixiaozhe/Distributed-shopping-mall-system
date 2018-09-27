@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.Condition;
 
 @RestController
 public class PayController {
@@ -64,6 +65,7 @@ public class PayController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
             num++;
             if (num>=10){//超时
                 //调用关闭订单接口

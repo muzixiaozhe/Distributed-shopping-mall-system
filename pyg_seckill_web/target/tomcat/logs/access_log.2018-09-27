@@ -1063,3 +1063,13 @@
 0:0:0:0:0:0:0:1 - - [27/Sep/2018:11:11:52 +0800] "GET /img/wx_cz.jpg HTTP/1.1" 304 - http-bio-9109-exec-3 4
 0:0:0:0:0:0:0:1 - - [27/Sep/2018:11:11:52 +0800] "GET /img/icons.png HTTP/1.1" 304 - http-bio-9109-exec-3 0
 0:0:0:0:0:0:0:1 - - [27/Sep/2018:11:11:52 +0800] "GET /components/ui-modules/nav/nav-portal-top.js HTTP/1.1" 404 1037 http-bio-9109-exec-3 4
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-11 3
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-10 3
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-10 2
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-11 2
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-11 1
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-10 3
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-11 2
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-10 3
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-11 2
+127.0.0.1 - - [27/Sep/2018:13:16:12 +0800] "POST /login/cas HTTP/1.1" 200 - http-bio-9109-exec-10 2

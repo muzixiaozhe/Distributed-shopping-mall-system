@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
+
 @Service
 public class WeixinPayServiceImpl implements WeixinPayService {
     @Autowired
@@ -119,6 +121,7 @@ public class WeixinPayServiceImpl implements WeixinPayService {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+            ReentrantLock
         }
     }
 }
