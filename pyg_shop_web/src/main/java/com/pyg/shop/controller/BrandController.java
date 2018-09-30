@@ -5,13 +5,12 @@ import com.pyg.pojo.TbBrand;
 import com.pyg.sellergoods.service.BrandService;
 import entity.PageResult;
 import entity.Result;
+import javafx.application.Application;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("brand")
@@ -25,6 +24,7 @@ public class BrandController {
      */
     @RequestMapping("findAll")
     public List<TbBrand> findAll(){
+
        return brandService.findAll();
     }
     /**

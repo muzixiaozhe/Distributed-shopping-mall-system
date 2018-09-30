@@ -121,7 +121,7 @@ public class WeixinPayServiceImpl implements WeixinPayService {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
-            ReentrantLock
+
         }
     }
 }
